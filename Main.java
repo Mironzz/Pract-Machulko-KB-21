@@ -1,38 +1,26 @@
 import java.util.Scanner;
 
-public class DiamondPattern {
+public class ReverseNumberWhile {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Введення кількості рядків для ромба
-        System.out.print("Введіть кількість рядків для ромба: ");
-        int n = scanner.nextInt();
+        // Введення числа
+        System.out.print("Введіть ціле число: ");
+        int number = scanner.nextInt();
+        int originalNumber = number; // Збереження оригінального числа для виведення
 
-        // Верхня частина ромба
-        for (int i = 1; i <= n; i++) {
-            // Виведення пробілів
-            for (int j = i; j < n; j++) {
-                System.out.print(" ");
-            }
-            // Виведення зірочок
-            for (int j = 1; j <= (2 * i - 1); j++) {
-                System.out.print("*");
-            }
-            System.out.println();
+        // Змінна для зберігання реверсованого числа
+        int reversedNumber = 0;
+
+        // Цикл while для реверсу числа
+        while (number != 0) {
+            int digit = number % 10; // Отримуємо останню цифру
+            reversedNumber = reversedNumber * 10 + digit; // Додаємо цифру до реверсованого числа
+            number /= 10; // Оновлюємо число, видаляючи останню цифру
         }
 
-        // Нижня частина ромба
-        for (int i = n - 1; i > 0; i--) {
-            // Виведення пробілів
-            for (int j = n; j > i; j--) {
-                System.out.print(" ");
-            }
-            // Виведення зірочок
-            for (int j = 1; j <= (2 * i - 1); j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
+        // Виведення результату з форматованим виведенням (наприклад, 10 символів, заповнених нулями)
+        System.out.printf("Реверсоване число: %010d\n", reversedNumber);
 
         scanner.close();
     }
